@@ -365,8 +365,7 @@ class ClusterBot(commands.AutoShardedBot):
 
         try:
             async with RedisLock(self.redis, f"command:{ctx.author.id}", 60, 1):
-                return await super().invoke(ctx)
-        except LockTimeoutError:
+                return await super().invoke(ctx):
             await ctx.reply(ctx._("error-command-redis-locked"))
 
     async def close(self):
